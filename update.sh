@@ -1,4 +1,4 @@
-command -v docker >/dev/null 2>&1 || { echo >&2 "'docker' is required but not installed. See https://github.com/shardeum/validator-dashboard?tab=readme-ov-file#how-to-install-and-run-a-shardeum-validator-node for details."; exit 1; }
+command -v docker >/dev/null 2>&1 || { echo >&2 "'docker' is required but not installed. See https://github.com/liberdus/validator-dashboard?tab=readme-ov-file#how-to-install-and-run-a-liberdus-validator-node for details."; exit 1; }
 if command -v docker-compose &>/dev/null; then
   echo "docker-compose is installed on this machine"
 elif docker --help | grep -q "compose"; then
@@ -30,4 +30,4 @@ echo "Rebuilding local validator image..."
 docker-safe build --no-cache -t local-dashboard -f Dockerfile --build-arg RUNDASHBOARD=y .
 ./docker-up.sh
 echo "Starting image. This could take a while..."
-(docker-safe logs -f shardeum-dashboard &) | grep -q 'done'
+(docker-safe logs -f liberdus-dashboard &) | grep -q 'done'

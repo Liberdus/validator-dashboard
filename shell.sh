@@ -12,4 +12,4 @@ docker-safe() {
   fi
 }
 
-docker-safe exec -it shardeum-dashboard /bin/bash
+docker-safe exec -it liberdus-dashboard /bin/bash

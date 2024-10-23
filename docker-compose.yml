@@ -1,6 +1,6 @@
 services:
-  shardeum-dashboard:
-    container_name: shardeum-dashboard
+  liberdus-dashboard:
+    container_name: liberdus-dashboard
     # network_mode: 'host'
     image: local-dashboard
     build:

@@ -20,8 +20,8 @@ echo "down exiting stack"
 echo "delete existing image"
 docker-safe rmi -f test-dashboard
 docker-safe rmi -f local-dashboard
-docker-safe rmi -f registry.gitlab.com/shardeum/server
-docker-safe rmi -f ghcr.io/shardeum/server
-docker-safe network rm shardeum_default
+docker-safe rmi -f registry.gitlab.com/liberdus/server
+docker-safe rmi -f ghcr.io/liberdus/server
+docker-safe network rm liberdus_default
 
 echo "done."

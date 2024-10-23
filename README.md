@@ -1,6 +1,6 @@
-# How to Install and Run a Shardeum Validator Node
+# How to Install and Run a Liberdus Validator Node
 
-This guide will walk you through the process of installing and running a Shardeum Validator Node on your system. Please follow the steps below carefully.
+This guide will walk you through the process of installing and running a Liberdus Validator Node on your system. Please follow the steps below carefully.
 
 ## Prerequisites
 
@@ -88,13 +88,13 @@ Choose one of the following methods to download and run the installation script:
 Using `curl`
 
 ```bash
-curl -O https://raw.githubusercontent.com/shardeum/validator-dashboard/main/installer.sh && chmod +x installer.sh && ./installer.sh
+curl -O https://raw.githubusercontent.com/liberdus/validator-dashboard/main/installer.sh && chmod +x installer.sh && ./installer.sh
 ```
 
 Using `wget`
 
 ```bash
-wget https://raw.githubusercontent.com/shardeum/validator-dashboard/main/installer.sh && chmod +x installer.sh && ./installer.sh
+wget https://raw.githubusercontent.com/liberdus/validator-dashboard/main/installer.sh && chmod +x installer.sh && ./installer.sh
 ```
 
 Follow the instructions provided by the installer script. Ensure you input the correct Archiver and Monitor IP addresses for the network you wish your validator to join.
@@ -114,17 +114,17 @@ Using Web Dashboard:
 
 Using Command Line:
 
-- Open a terminal and navigate to the Shardeum home directory (`$HOME/.shardeum`).
+- Open a terminal and navigate to the Liberdus home directory (`$HOME/.liberdus`).
 - Enter the validator container with `./shell`.
 - In the container, run `operator-cli start` to start the validator node.
 
 ### Add the network to wallet
 
-Open the page <https://docs.shardeum.org/docs/network/endpoints> and use the setting for the Atomium network.
+Open the page <https://docs.liberdus.org/docs/network/endpoints> and use the setting for the Atomium network.
 
 ### Get some coins from the faucet
 
-[Join the Shardeum Discord](https://discord.gg/shardeum) and claim tokens from the faucet Channel by running the `/faucet <account>` command.
+[Join the Liberdus Discord](https://discord.gg/liberdus) and claim tokens from the faucet Channel by running the `/faucet <account>` command.
 
 ### Start your validator node
 
@@ -161,15 +161,15 @@ This will be more effective when the info gathered in the install script is stor
 
 This will clean up the last (lastest) build. Just meant to save a few key strokes.
 
-Instructions for the user wanting to run a Shardeum validator node can be found here: <https://docs.shardeum.org/docs/node/run/validator>
+Instructions for the user wanting to run a Liberdus validator node can be found here: <https://docs.liberdus.org/docs/node/run/validator>
 
 ## Versioning
 
-To set up the dashboard installer script for different versions of the Shardeum network follow the steps below:
+To set up the dashboard installer script for different versions of the Liberdus network follow the steps below:
 
-- Point the installer to the correct CLI and GUI versions in [the entrypoint.sh](https://github.com/shardeum/validator-dashboard/blob/d366e0fbf53ca7e8efb7f7d4aa1db4de7574657e/entrypoint.sh#L25) file.
-- Set the right docker image version in the [Dockerfile](https://github.com/shardeum/validator-dashboard/blob/d366e0fbf53ca7e8efb7f7d4aa1db4de7574657e/Dockerfile#L1). You can find all tagged image versions [here](https://github.com/shardeum/shardeum/pkgs/container/server/versions?filters%5Bversion_type%5D=tagged).
-- The installer script creates a `.env` file that [defines the network details](https://github.com/shardeum/validator-dashboard/blob/d366e0fbf53ca7e8efb7f7d4aa1db4de7574657e/installer.sh#L540-L589), modify the script to specify the details of the new network.
+- Point the installer to the correct CLI and GUI versions in [the entrypoint.sh](https://github.com/liberdus/validator-dashboard/blob/d366e0fbf53ca7e8efb7f7d4aa1db4de7574657e/entrypoint.sh#L25) file.
+- Set the right docker image version in the [Dockerfile](https://github.com/liberdus/validator-dashboard/blob/d366e0fbf53ca7e8efb7f7d4aa1db4de7574657e/Dockerfile#L1). You can find all tagged image versions [here](https://github.com/liberdus/liberdus/pkgs/container/server/versions?filters%5Bversion_type%5D=tagged).
+- The installer script creates a `.env` file that [defines the network details](https://github.com/liberdus/validator-dashboard/blob/d366e0fbf53ca7e8efb7f7d4aa1db4de7574657e/installer.sh#L540-L589), modify the script to specify the details of the new network.
   The script should now correctly set up the Dashboard for your new network.
 
 ## Contributing

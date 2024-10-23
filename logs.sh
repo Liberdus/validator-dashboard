@@ -12,4 +12,4 @@ docker-safe() {
   fi
 }
 
-docker-safe logs -f shardeum-dashboard
+docker-safe logs -f liberdus-dashboard

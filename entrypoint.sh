@@ -26,20 +26,20 @@ echo "/home/node/.pm2/logs/*.log /home/node/app/cli/build/logs/*.log {
 
 # Pull latest versions of the CLI and GUI from gui-updates branch
 
-git clone -b dev https://github.com/shardeum/validator-cli.git cli
+git clone -b dev https://github.com/liberdus/validator-cli.git cli
 
 echo "Install the CLI"
 cd cli
 npm i --silent && npm link
 cd ..
 
-git clone -b dev https://github.com/shardeum/validator-gui.git gui
+git clone -b dev https://github.com/liberdus/validator-gui.git gui
 
 echo "Install the GUI"
 cd gui
 npm i --silent
 npm run build
-#openssl req -x509 -nodes -days 99999 -newkey rsa:2048 -keyout ./selfsigned.key -out selfsigned.crt -subj "/C=US/ST=Texas/L=Dallas/O=Shardeum/OU=Shardeum/CN=shardeum.org"
+#openssl req -x509 -nodes -days 99999 -newkey rsa:2048 -keyout ./selfsigned.key -out selfsigned.crt -subj "/C=US/ST=Texas/L=Dallas/O=Liberdus/OU=Liberdus/CN=liberdus.org"
 
 # if CA.cnf does not exist, create it
 if [ ! -f "CA.cnf" ]; then
@@ -75,7 +75,7 @@ prompt = no
 countryName = XX
 stateOrProvinceName = Localzone
 localityName = Localhost
-organizationName = Shardeum Sphinx 1.x Validator Cert.
+organizationName = Liberdus 1.x Validator Cert.
 commonName = localhost
 
 [req_ext]

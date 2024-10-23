@@ -60,11 +60,11 @@ if ! (command -v openssl > /dev/null || command -v shasum > /dev/null || command
 fi
 
 
-read -p "During this early stage of Betanet the Shardeum team will be collecting some performance and debugging info from your node to help improve future versions of the software.
+read -p "During this early stage of Test network the Liberdus team will be collecting some performance and debugging info from your node to help improve future versions of the software.
 This is only temporary and will be discontinued as we get closer to mainnet.
-Thanks for running a node and helping to make Shardeum better.
+Thanks for running a node and helping to make Liberdus better.
 
-By running this installer, you agree to allow the Shardeum team to collect this data. (Y/n)?: " WARNING_AGREE
+By running this installer, you agree to allow the Liberdus team to collect this data. (Y/n)?: " WARNING_AGREE
 
 # Echo user's response, or indicate if no response was provided
 if [ -z "$WARNING_AGREE" ]; then
@@ -83,19 +83,19 @@ then
   exit
 fi
 
-read -p "What base directory should the node use (default ~/.shardeum): " input
+read -p "What base directory should the node use (default ~/.liberdus): " input
 
 # Set default value if input is empty
-input=${input:-~/.shardeum}
+input=${input:-~/.liberdus}
 
 # Reprompt if not alphanumeric characters, tilde, forward slash, underscore, period, hyphen, or contains spaces
 while [[ ! $input =~ ^[[:alnum:]_.~/-]+$ || $input =~ [[:space:]] ]]; do
   echo "Error: The directory name contains invalid characters or spaces."
   echo "Allowed characters are alphanumeric characters, tilde (~), forward slash (/), underscore (_), period (.), and hyphen (-)."
-  read -p "Please enter a valid base directory (default ~/.shardeum): " input
+  read -p "Please enter a valid base directory (default ~/.liberdus): " input
 
   # Set default if input is empty
-  input=${input:-~/.shardeum}
+  input=${input:-~/.liberdus}
 done
 
 # Echo the final directory used (with ~ if present)
@@ -276,8 +276,8 @@ SHMINT_DEFAULT=10001
 PREVIOUS_PASSWORD=none
 
 
-GITLAB_IMAGE_NAME="registry.gitlab.com/shardeum/server:latest"
-GITHUB_IMAGE_NAME="ghcr.io/shardeum/server:latest"
+GITLAB_IMAGE_NAME="registry.gitlab.com/liberdus/server:dev"
+GITHUB_IMAGE_NAME="ghcr.io/liberdus/server:dev"
 
 # Check if container exists with GitLab image
 GITLAB_CONTAINER_ID=$(docker-safe ps -qf "ancestor=$GITLAB_IMAGE_NAME")
@@ -543,7 +543,7 @@ while :; do
 done
 
 while :; do
-  echo "To run a validator on the Sphinx network, you will need to open two ports in your firewall."
+  echo "To run a validator on the Liberdus test network, you will need to open two ports in your firewall."
   read -p "This allows p2p communication between nodes. Enter the first port (1025-65536) for p2p communication (default $SHMEXT_DEFAULT): " SHMEXT
   SHMEXT=${SHMEXT:-$SHMEXT_DEFAULT}
   [[ $SHMEXT =~ ^[0-9]+$ ]] || { echo "Enter a valid port"; continue; }
@@ -563,10 +563,10 @@ while :; do
   fi
 done
 
-#APPSEEDLIST="archiver-sphinx.shardeum.org"
-#APPMONITOR="monitor-sphinx.shardeum.org"
-APPMONITOR="96.126.116.124"
-RPC_SERVER_URL="https://atomium.shardeum.org"
+#APPSEEDLIST="test.liberdus.com"
+#APPMONITOR="monitor-test.liberdus.com"
+APPMONITOR="69.30.199.114"
+RPC_SERVER_URL="https://rpc-test.liberdus.com"
 
 cat <<EOF
 
@@ -585,7 +585,7 @@ if [ -d "$NODEHOME" ]; then
   fi
 fi
 
-git clone -b dev https://github.com/shardeum/validator-dashboard.git ${NODEHOME} || { echo "Error: Permission denied. Exiting script."; exit 1; }
+git clone -b dev https://github.com/liberdus/validator-dashboard.git ${NODEHOME} || { echo "Error: Permission denied. Exiting script."; exit 1; }
 cd ${NODEHOME}
 chmod a+x ./*.sh
 
@@ -604,7 +604,7 @@ touch ./.env
 cat >./.env <<EOL
 EXT_IP=${EXTERNALIP}
 INT_IP=${INTERNALIP}
-EXISTING_ARCHIVERS=[{"ip":"34.159.56.206","port":4000,"publicKey":"64a3833499130406550729ab20f6bec351d04ec9be3e5f0144d54f01d4d18c45"},{"ip":"3.76.189.189","port":4000,"publicKey":"44d4be08423dd9d90195d650fc58f41cc2fdeb833180686cdbcb3196fe113497"},{"ip":"69.164.202.28","port":4000,"publicKey":"2cfbc5a9a96591e149225395ba33fed1a8135123f7702abdb7deca3d010a21ee"}]
+EXISTING_ARCHIVERS=[{"ip":"69.30.199.114","port":4000,"publicKey":"758b1c119412298802cd28dbfa394cdfeecc4074492d60844cc192d632d84de3"}]
 APP_MONITOR=${APPMONITOR}
 DASHPASS=${DASHPASS}
 DASHPORT=${DASHPORT}
@@ -614,11 +614,11 @@ SHMEXT=${SHMEXT}
 SHMINT=${SHMINT}
 RPC_SERVER_URL=${RPC_SERVER_URL}
 NEXT_PUBLIC_RPC_URL=${RPC_SERVER_URL}
-NEXT_EXPLORER_URL=https://explorer-atomium.shardeum.org
-minNodes=640
-baselineNodes=640
+NEXT_EXPLORER_URL=https://explorer-test.liberdus.com
+minNodes=20
+baselineNodes=20
 maxNodes=1200
-nodesPerConsensusGroup=128
+nodesPerConsensusGroup=20
 EOL
 
 cat <<EOF
@@ -663,7 +663,7 @@ fi
 ./docker-up.sh
 
 echo "Starting image. This could take a while..."
-(docker-safe logs -f shardeum-dashboard &) | grep -q 'done'
+(docker-safe logs -f liberdus-dashboard &) | grep -q 'done'
 
 # Check if secrets.json exists and copy it inside container
 cd ${CURRENT_DIRECTORY}
@@ -693,7 +693,7 @@ fi
 cat <<EOF
 
 To use the Command Line Interface:
-	1. Navigate to the Shardeum home directory ($NODEHOME).
+	1. Navigate to the Liberdus home directory ($NODEHOME).
 	2. Enter the validator container with ./shell.sh.
 	3. Run "operator-cli --help" for commands
 
