@@ -1,4 +1,4 @@
-FROM ghcr.io/liberdus/server:latest
+FROM ghcr.io/liberdus/server:dev
 
 ARG RUNDASHBOARD=y
 ENV RUNDASHBOARD=${RUNDASHBOARD}
