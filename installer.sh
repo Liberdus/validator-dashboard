@@ -565,7 +565,7 @@ done
 
 #APPSEEDLIST="test.liberdus.com"
 #APPMONITOR="monitor-test.liberdus.com"
-APPMONITOR="69.30.199.114"
+APPMONITOR="63.141.233.178"
 RPC_SERVER_URL="https://rpc-test.liberdus.com"
 
 cat <<EOF
@@ -604,7 +604,7 @@ touch ./.env
 cat >./.env <<EOL
 EXT_IP=${EXTERNALIP}
 INT_IP=${INTERNALIP}
-EXISTING_ARCHIVERS=[{"ip":"69.30.199.114","port":4000,"publicKey":"758b1c119412298802cd28dbfa394cdfeecc4074492d60844cc192d632d84de3"}]
+EXISTING_ARCHIVERS=[{"ip":"63.141.233.178","port":4000,"publicKey":"758b1c119412298802cd28dbfa394cdfeecc4074492d60844cc192d632d84de3"}]
 APP_MONITOR=${APPMONITOR}
 DASHPASS=${DASHPASS}
 DASHPORT=${DASHPORT}
