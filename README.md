@@ -84,6 +84,7 @@ brew install docker-compose
 ## Download and Run Installation Script
 
 Note this step also requires sudo privilages. To give sudo access type as root: usermod -aG sudo username
+
 Choose one of the following methods to download and run the installation script:
 
 Using `curl`
