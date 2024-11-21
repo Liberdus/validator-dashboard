@@ -21,7 +21,8 @@ echo "delete existing image"
 docker-safe rmi -f test-dashboard
 docker-safe rmi -f local-dashboard
 docker-safe rmi -f registry.gitlab.com/liberdus/server
-docker-safe rmi -f ghcr.io/liberdus/server
+docker-safe rmi -f ghcr.io/liberdus/server:dev
+docker-safe rmi -f ghcr.io/liberdus/server:latest
 docker-safe network rm liberdus_default
 
 echo "done."
