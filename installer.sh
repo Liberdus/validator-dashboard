@@ -615,10 +615,10 @@ SHMINT=${SHMINT}
 RPC_SERVER_URL=${RPC_SERVER_URL}
 NEXT_PUBLIC_RPC_URL=${RPC_SERVER_URL}
 NEXT_EXPLORER_URL=https://explorer-test.liberdus.com
-minNodes=20
-baselineNodes=20
+minNodes=30
+baselineNodes=30
 maxNodes=1200
-nodesPerConsensusGroup=20
+nodesPerConsensusGroup=15
 EOL
 
 cat <<EOF
