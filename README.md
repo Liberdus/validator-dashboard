@@ -83,7 +83,7 @@ brew install docker-compose
 
 ## Download and Run Installation Script
 
-Note this step should be done as a sudo privilaged user and not as root. To create a user type: adduser username. To give sudo access type as root: usermod -aG sudo username
+Note this step should be done as a sudo privilaged user and not as root. To create a user type as root: adduser username. To give sudo access type as root: usermod -aG sudo username
 
 Choose one of the following methods to download and run the installation script:
 
