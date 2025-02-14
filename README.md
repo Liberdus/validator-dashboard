@@ -6,15 +6,47 @@ This guide will walk you through the process of installing and running a Liberdu
 
 Before you begin, ensure you have the following prerequisites installed on your system:
 
-1. Install Package Managers
-
 **For Linux:**
+
+1. Install Package Managers
 
 ```bash
 sudo apt-get install curl
 ```
 
+2. Update Package Managers:
+
+```bash
+sudo apt update
+```
+
+3. Install docker
+
+Install docker with docker.io
+
+```bash
+sudo apt install docker.io
+```
+
+> Verify Docker installation by running `docker --version` (should return version 20.10.12 or higher).
+
+4. Install docker-compose
+
+```bash
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+
+Setup permissions for docker-compose using
+
+```bash
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+> Verify docker-compose installation by running `docker-compose --version` (should return version 1.29.2 or higher).
+
 **For MacOS:**
+
+1. Install Package Managers
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -29,29 +61,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 2. Update Package Managers:
 
-For Linux:
-
-```bash
-sudo apt update
-```
-
-For MacOS:
-
 ```bash
 brew update
 ```
 
 3. Install docker
-
-For Linux:
-
-Install docker with docker.io
-
-```bash
-sudo apt install docker.io
-```
-
-For MacOS:
 
 ```bash
 brew install docker
@@ -60,20 +74,6 @@ brew install docker
 > Verify Docker installation by running `docker --version` (should return version 20.10.12 or higher).
 
 4. Install docker-compose
-
-**For Linux:**
-
-```bash
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-```
-
-Setup permissions for docker-compose using
-
-```bash
-sudo chmod +x /usr/local/bin/docker-compose
-```
-
-**For MacOS:**
 
 ```bash
 brew install docker-compose
