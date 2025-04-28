@@ -98,6 +98,11 @@ usermod -aG sudo liberdus
 su liberdus
 ```
 
+```bash
+cd
+```
+
+
 Choose one of the following methods to download and run the installation script:
 
 Using `curl`
