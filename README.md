@@ -4,6 +4,7 @@ This guide will walk you through the process of installing and running a Liberdu
 
 ## Prerequisites
 
+Note this step should be done as root or a sudo privilaged user.
 Before you begin, ensure you have the following prerequisites installed on your system:
 
 **For Linux:**
@@ -84,6 +85,18 @@ brew install docker-compose
 ## Download and Run Installation Script
 
 Note this step should be done as a sudo privilaged user and not as root. To create a user type as root: adduser username. To give sudo access type as root: usermod -aG sudo username
+
+```bash
+adduser liberdus
+```
+
+```bash
+usermod -aG sudo liberdus
+```
+
+```bash
+su liberdus
+```
 
 Choose one of the following methods to download and run the installation script:
 
