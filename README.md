@@ -84,7 +84,7 @@ brew install docker-compose
 
 ## Download and Run Installation Script
 
-Note this step should be done as a sudo privilaged user and not as root. To create a user type as root: adduser username. To give sudo access type as root: usermod -aG sudo username
+Note this step should be done as a sudo privilaged user and not as root. Do the following to create a user and give sudo access:
 
 ```bash
 adduser liberdus
@@ -127,16 +127,16 @@ After the installation process completes, you can start the validator using eith
 
 Using Web Dashboard:
 
-- Open a web browser and navigate to the web dashboard at `localhost:8080` or ServerIP:8080
+- Open a web browser and navigate to the web dashboard at `https://localhost:8080` or https://ServerIP:8080
 - Enter the password you set during the installation process.
-- Click the `Start Node` button in the top right white box.
-- Once the validator has started, connect your wallet.
+- Follow the instructions in the dashboard to start your validator.
 
 Using Command Line:
 
 - Open a terminal and navigate to the Liberdus home directory (`$HOME/.liberdus`).
 - Enter the validator container with `./shell`.
 - In the container, run `operator-cli start` to start the validator node.
+- Run `operator-cli -h` for list of commands.
 
 ### Add the network to wallet
 
