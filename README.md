@@ -102,19 +102,18 @@ su liberdus
 cd
 ```
 
-
 Choose one of the following methods to download and run the installation script:
 
 Using `curl`
 
 ```bash
-curl -O https://raw.githubusercontent.com/liberdus/validator-dashboard/main/installer.sh && chmod +x installer.sh && sudo ./installer.sh
+curl -O https://raw.githubusercontent.com/liberdus/validator-dashboard/liberdus-dev-network/installer.sh && chmod +x installer.sh && sudo ./installer.sh
 ```
 
 Using `wget`
 
 ```bash
-wget https://raw.githubusercontent.com/liberdus/validator-dashboard/main/installer.sh && chmod +x installer.sh && sudo ./installer.sh
+wget https://raw.githubusercontent.com/liberdus/validator-dashboard/liberdus-dev-network/installer.sh && chmod +x installer.sh && sudo ./installer.sh
 ```
 
 Follow the instructions provided by the installer script. Ensure you input the correct Archiver and Monitor IP addresses for the network you wish your validator to join.
