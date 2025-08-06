@@ -31,6 +31,10 @@ sudo apt install docker.io
 
 > Verify Docker installation by running `docker --version` (should return version 20.10.12 or higher).
 
+```bash
+docker --version
+```
+
 4. Install docker-compose
 
 ```bash
@@ -44,6 +48,10 @@ sudo chmod +x /usr/local/bin/docker-compose
 ```
 
 > Verify docker-compose installation by running `docker-compose --version` (should return version 1.29.2 or higher).
+
+```bash
+docker-compose --version
+```
 
 **For MacOS:**
 
@@ -108,13 +116,13 @@ Choose one of the following methods to download and run the installation script:
 Using `curl`
 
 ```bash
-curl -O https://raw.githubusercontent.com/liberdus/validator-dashboard/main/installer.sh && chmod +x installer.sh && sudo ./installer.sh
+curl -O https://raw.githubusercontent.com/liberdus/validator-dashboard/main/installer.sh && chmod +x installer.sh && ./installer.sh
 ```
 
 Using `wget`
 
 ```bash
-wget https://raw.githubusercontent.com/liberdus/validator-dashboard/main/installer.sh && chmod +x installer.sh && sudo ./installer.sh
+wget https://raw.githubusercontent.com/liberdus/validator-dashboard/main/installer.sh && chmod +x installer.sh && ./installer.sh
 ```
 
 Follow the instructions provided by the installer script. Ensure you input the correct Archiver and Monitor IP addresses for the network you wish your validator to join.
