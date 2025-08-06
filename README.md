@@ -38,13 +38,7 @@ docker --version
 4. Install docker-compose
 
 ```bash
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-```
-
-Setup permissions for docker-compose using
-
-```bash
-sudo chmod +x /usr/local/bin/docker-compose
+apt install docker-compose
 ```
 
 > Verify docker-compose installation by running `docker-compose --version` (should return version 1.29.2 or higher).
