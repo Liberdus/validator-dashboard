@@ -84,9 +84,9 @@ brew install docker-compose
 
 > Verify docker-compose installation by running `docker-compose --version` (should return version 1.29.2 or higher).
 
-## Download and Run Installation Script
+## Create a sudo Privilaged User
 
-Note this step should be done as a sudo privilaged user and not as root. Do the following to create a user and give sudo access:
+Do the following to create a user and give sudo access:
 
 ```bash
 adduser liberdus
@@ -104,19 +104,12 @@ su liberdus
 cd
 ```
 
+## Download and Run Installation Script
 
-Choose one of the following methods to download and run the installation script:
-
-Using `curl`
+Note this step should be done as a sudo privilaged user created above and not as root.
 
 ```bash
 curl -O https://raw.githubusercontent.com/liberdus/validator-dashboard/main/installer.sh && chmod +x installer.sh && ./installer.sh
-```
-
-Using `wget`
-
-```bash
-wget https://raw.githubusercontent.com/liberdus/validator-dashboard/main/installer.sh && chmod +x installer.sh && ./installer.sh
 ```
 
 Follow the instructions provided by the installer script. Ensure you input the correct Archiver and Monitor IP addresses for the network you wish your validator to join.
