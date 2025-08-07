@@ -2,7 +2,7 @@
 
 This guide will walk you through the process of installing and running a Liberdus Validator Node on your system. Please follow the steps below carefully.
 
-## Prerequisites
+## Install Dockers
 
 Note this step should be done as root or a sudo privilaged user.
 Before you begin, ensure you have the following prerequisites installed on your system:
