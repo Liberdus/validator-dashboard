@@ -4,8 +4,7 @@ This guide will walk you through the process of installing and running a Liberdu
 
 ## Install Dockers
 
-Note this step should be done as root or a sudo privilaged user.
-Before you begin, ensure you have the following prerequisites installed on your system:
+Do the following as root or a sudo privilaged user:
 
 **For Linux:**
 
@@ -32,19 +31,19 @@ sudo apt install docker.io
 > Verify Docker installation by running `docker --version` (should return version 20.10.12 or higher).
 
 ```bash
-docker --version
+sudo docker --version
 ```
 
 4. Install docker-compose
 
 ```bash
-apt install docker-compose
+sudo apt install docker-compose
 ```
 
 > Verify docker-compose installation by running `docker-compose --version` (should return version 1.29.2 or higher).
 
 ```bash
-docker-compose --version
+sudo docker-compose --version
 ```
 
 **For MacOS:**
@@ -86,14 +85,14 @@ brew install docker-compose
 
 ## Create a sudo Privilaged User
 
-Do the following to create a user and give sudo access:
+Do the following as root or a sudo user to create a user and give sudo access:
 
 ```bash
-adduser liberdus
+sudo adduser liberdus
 ```
 
 ```bash
-usermod -aG sudo liberdus
+sudo usermod -aG sudo liberdus
 ```
 
 ```bash
@@ -106,7 +105,7 @@ cd
 
 ## Download and Run Installation Script
 
-Note this step should be done as a sudo privilaged user created above and not as root.
+Do the following as the user created above and not as root.
 
 ```bash
 curl -O https://raw.githubusercontent.com/liberdus/validator-dashboard/main/installer.sh && chmod +x installer.sh && ./installer.sh
