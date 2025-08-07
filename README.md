@@ -83,9 +83,9 @@ brew install docker-compose
 
 > Verify docker-compose installation by running `docker-compose --version` (should return version 1.29.2 or higher).
 
-## Create a sudo Privilaged User
+## Create a Liberdus User
 
-Do the following as root or a sudo user to create a user and give sudo access:
+Do the following as root or a sudo user to create a Liberdus user that will install and run the node:
 
 ```bash
 sudo adduser liberdus
