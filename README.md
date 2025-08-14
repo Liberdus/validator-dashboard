@@ -5,8 +5,8 @@ This guide will walk you through the process of installing and running a Liberdu
 ## Hardware Requirements
 
 The minimum requirements are:
-A VPS server with 2 CPU cores, 2 GB of RAM, 256 GB of SSD, 1 Gbps network, 1 TB/month bandwidth, power backup and redundant Internet connections
-Linux (recommended for easy setup)
+A VPS server with 2 CPU cores, 2 GB of RAM, 256 GB of SSD, 1 Gbps network, 1 TB/month bandwidth, DDOS protection, power backup and redundant Internet connections.
+A Linux Ubuntu OS is highly recommended for easy setup.
 
 A server like this should cost less than $30 per month from a web hosting company.
 
@@ -183,7 +183,7 @@ Follow the instructions provided by the installer script. You can just hit the e
 
 ## Docker management
 
-In most cases you don't need to run manage the docker images manually, but the following scripts are provided to make it easier if you do. These should be run as the user that was created during the setup and not as root.
+In most cases you don't need to manage the docker images manually, but the following scripts are provided to make it easier if you do. These should be run as the user that was created during the setup and not as root.
 
 ### Start the docker images
 
