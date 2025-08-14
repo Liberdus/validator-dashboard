@@ -133,7 +133,7 @@ Using Web Dashboard:
 
 - Open a web browser and navigate to the web dashboard at `https://localhost:8080` or https://ServerIP:8080
 - Enter the password you set during the installation process.
-- Select the network you want to run your validator on (testnet, devnet, or localnet).
+- Select the testnet network from the drop down menu; developer can also select devnet, or localnet.
 - Click the `Start Node` button to launch your validator node.
 
 Using Command Line:
