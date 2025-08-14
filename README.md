@@ -123,7 +123,8 @@ Using Web Dashboard:
 
 - Open a web browser and navigate to the web dashboard at `https://localhost:8080` or https://ServerIP:8080
 - Enter the password you set during the installation process.
-- Follow the instructions in the dashboard to start your validator.
+- Select the network you want to run your validator on (testnet, devnet, or localnet).
+- Click the `Start Node` button to launch your validator node.
 
 Using Command Line:
 
@@ -132,24 +133,20 @@ Using Command Line:
 - In the container, run `operator-cli start` to start the validator node.
 - Run `operator-cli -h` for list of commands.
 
-### Add the network to wallet
+### Stake LIB
 
-Open the page <https://docs.liberdus.org/docs/network/endpoints> and use the setting for the Atomium network.
+Once your validator node is running, you can proceed with staking LIB.
 
-### Get some coins from the faucet
+1. In the web dashboard, once logged in, you will see your **node address** and a **QR code** for your node address.
+2. Open the [Liberdus wallet](https://liberdus.com/download/).
+   - If this is your first time using the Liberdus Wallet, create an account by providing a username.
+   - Ensure your wallet balance is at least **1250 LIB** before staking.
+3. Go to the **Validator** tab in the menu.
+4. Click the **Stake** button and enter your node address.
+   - If you’re using the mobile app, you can scan the QR code instead.
+5. Complete the staking process.
 
-[Join the Liberdus Discord](https://discord.gg/liberdus) and claim tokens from the faucet Channel by running the `/faucet <account>` command.
-
-### Start your validator node
-
-- Open a web browser and navigate to the web dashboard at `localhost:8080` or ServerIP:8080 (or the port you picked)
-- Click the `Start Node` button.
-
-### Stake SHM
-
-Connect the wallet and stake 10 SHM.
-
-Now check your node status, if your node status is on `Standby` and you have 10 SHM or more staked, your validator node is setup correctly. The network will automatically add your validator to be active in the network. The time to be added as an active validator will vary based on network load and validators in the network.
+After staking, the Web Dashboard will show your staked amount (**1250 LIB or more**) and your node status will update to `Standby` shortly afterward. This indicates that your validator node is set up correctly. The network will then automatically add your validator to the active set based on network load and available validator slots.
 
 ## Stack management
 
