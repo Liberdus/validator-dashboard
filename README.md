@@ -111,7 +111,7 @@ Do the following as the user created above and not as root.
 curl -O https://raw.githubusercontent.com/liberdus/validator-dashboard/main/installer.sh && chmod +x installer.sh && ./installer.sh
 ```
 
-Follow the instructions provided by the installer script. Ensure you input the correct Archiver and Monitor IP addresses for the network you wish your validator to join.
+Follow the instructions provided by the installer script. You can just hit the enter button to accept the default values which should work for most cases.
 
 > If you are behind a router and you are using ports 9001 and 10001 for p2p communication, make sure ports 9001 and 10001, are forwarded (be careful doing this since it will modify your firewall). More info on router port forwarding: <https://www.noip.com/support/knowledgebase/general-port-forwarding-guide/>
 
@@ -131,57 +131,74 @@ Using Command Line:
 - Open a terminal and navigate to the Liberdus home directory (`$HOME/.liberdus`).
 - Enter the validator container with `./shell`.
 - In the container, run `operator-cli start` to start the validator node.
+- Run `operator-cli status` to check that it is running.
 - Run `operator-cli -h` for list of commands.
 
 ### Stake LIB
 
-Once your validator node is running, you can proceed with staking LIB.
+Once your validator node is running, you can proceed with staking LIB to your node.
 
 1. In the web dashboard, once logged in, you will see your **node address** and a **QR code** for your node address.
 2. Open the [Liberdus wallet](https://liberdus.com/download/).
    - If this is your first time using the Liberdus Wallet, create an account by providing a username.
-   - Ensure your wallet balance is at least **1250 LIB** before staking.
-3. Go to the **Validator** tab in the menu.
-4. Click the **Stake** button and enter your node address.
+3. Select the **Validator** option in the menu.
+5. Click the **Stake** button and enter your node address.
    - If you’re using the mobile app, you can scan the QR code instead.
-5. Complete the staking process.
+4. If you don't have at least **1250 LIB**. you can get some by clicking the Claim button there.
+6. Wait about 15 seconds to get the LIB. Click the **Subit Stake** button to complete the staking process.
 
 After staking, the Web Dashboard will show your staked amount (**1250 LIB or more**) and your node status will update to `Standby` shortly afterward. This indicates that your validator node is set up correctly. The network will then automatically add your validator to the active set based on network load and available validator slots.
 
-## Stack management
+## Software version updates
 
-### Start the stack
+Occacionally you will see a message in the validator dashboard that you need to update the node software version. To be notified of updates you can also check the node operators announcement channel in the Liberdus Discord or subscribe to the node operators mailing list here https://groups.google.com/g/liberdus-node-operators
+
+### Gracefully stop the node
+
+1. In the validator dashboard, click the **Settings** icon.
+2. Uncheck the option for **Auto Restart Node** so that it does not join the network again after it is rotated out.
+
+Never forse stop your node if it is participating in the network as this will trigger a penalty on the stake amount.
+
+### Update the software
+
+Just run the installer script again to update the validator node software.
+Do the following as the user that was created earlier and not as root.
 
 ```bash
+curl -O https://raw.githubusercontent.com/liberdus/validator-dashboard/main/installer.sh && chmod +x installer.sh && ./installer.sh
+```
+
+Follow the instructions provided by the installer script. You can just hit the enter button to accept the default values which should work for most cases.
+
+## Docker management
+
+In most cases you don't need to run manage the docker images manually, but the following scripts are provided to make it easier if you do. These should be run as the user that was created during the setup and not as root.
+
+### Start the docker images
+
+```bash
+cd .liberdus
 ./docker-up.sh
 ```
 
 This will be more effective when the info gathered in the install script is stored in persisent volume that is mounted by the container.
 
-### Stop the stack
+### Stop the docker images
 
 ```bash
+cd .liberdus
 ./docker-down.sh
 ```
 
 ### Clean up
 
 ```bash
+cd .liberdus
 ./clean.sh
 ```
 
 This will clean up the last (lastest) build. Just meant to save a few key strokes.
-
-Instructions for the user wanting to run a Liberdus validator node can be found here: <https://docs.liberdus.org/docs/node/run/validator>
-
-## Versioning
-
-To set up the dashboard installer script for different versions of the Liberdus network follow the steps below:
-
-- Point the installer to the correct CLI and GUI versions in [the entrypoint.sh](https://github.com/liberdus/validator-dashboard/blob/d366e0fbf53ca7e8efb7f7d4aa1db4de7574657e/entrypoint.sh#L25) file.
-- Set the right docker image version in the [Dockerfile](https://github.com/liberdus/validator-dashboard/blob/d366e0fbf53ca7e8efb7f7d4aa1db4de7574657e/Dockerfile#L1). You can find all tagged image versions [here](https://github.com/liberdus/liberdus/pkgs/container/server/versions?filters%5Bversion_type%5D=tagged).
-- The installer script creates a `.env` file that [defines the network details](https://github.com/liberdus/validator-dashboard/blob/d366e0fbf53ca7e8efb7f7d4aa1db4de7574657e/installer.sh#L540-L589), modify the script to specify the details of the new network.
-  The script should now correctly set up the Dashboard for your new network.
 
 ## Contributing
 
