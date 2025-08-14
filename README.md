@@ -2,6 +2,16 @@
 
 This guide will walk you through the process of installing and running a Liberdus Validator Node on your system. Please follow the steps below carefully.
 
+## Hardware Requirements
+
+The minimum requirements are:
+A VPS server with 2 CPU cores, 2 GB of RAM, 256 GB of SSD, 1 Gbps network, 1 TB/month bandwidth, power backup and redundant Internet connections
+Linux (recommended for easy setup)
+
+A server like this should cost less than $30 per month from a web hosting company.
+
+Although you can run a server from home, it is not recommended since electric power and redundant Internet connections would be lacking and would risk your node getting penalized if it goes down.
+
 ## Install Dockers
 
 Do the following as root or a sudo privilaged user:
