@@ -440,7 +440,6 @@ read_password() {
       PASSWORD+="$CHAR"
     fi
   done
-  echo # Print newline after password input
   echo $PASSWORD
 }
 
@@ -450,6 +449,7 @@ if [ "$CHANGEPASSWORD" = "y" ]; then
   do
     echo -n -e "Password requirements: min 8 characters, at least 1 lower case letter, at least 1 upper case letter, at least 1 number, at least 1 special character !@#$%^&*()_+$ \nSet the password to access the Dashboard:"
     DASHPASS=$(read_password)
+    echo # Print newline after password input
 
     # Check password length
     if (( ${#DASHPASS} < 8 )); then
@@ -473,8 +473,9 @@ if [ "$CHANGEPASSWORD" = "y" ]; then
 
     # Password is valid, now confirm it
     else
-        echo -e "\nConfirm the password:"
+        echo -n "Confirm the password:"
         DASHPASS_CONFIRM=$(read_password)
+        echo # Print newline after password confirmation
         
         if [ "$DASHPASS" = "$DASHPASS_CONFIRM" ]; then
             valid_pass=true
