@@ -446,10 +446,17 @@ if [ "$CHANGEPASSWORD" = "y" ]; then
     elif ! [[ "$DASHPASS" =~ [!@#$%^\&*()_+$] ]]; then
         echo -e "\nInvalid password! Must contain at least one special character !@#$%^&*()_+$.\n"
 
-    # Password is valid
+    # Password is valid, now confirm it
     else
-        valid_pass=true
-        echo "\nPassword set successfully."
+        echo -e "\nConfirm the password:"
+        DASHPASS_CONFIRM=$(read_password)
+        
+        if [ "$DASHPASS" = "$DASHPASS_CONFIRM" ]; then
+            valid_pass=true
+            echo -e "\nPassword set successfully."
+        else
+            echo -e "\nPasswords do not match. Please try again.\n"
+        fi
     fi
   done
 
