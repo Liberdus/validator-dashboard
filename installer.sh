@@ -158,7 +158,35 @@ else
     exit 1
 fi
 
+# Detect if sudo is needed for docker commands
+detect_docker_sudo || { echo >&2 "Failed to access docker. Please check your docker installation."; exit 1; }
+
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+# Function to detect if sudo is needed for docker commands
+detect_docker_sudo() {
+  # Check if docker command exists
+  if ! command -v docker &>/dev/null; then
+    echo "Docker is not installed"
+    return 1
+  fi
+  
+  # Try running docker without sudo first
+  if docker info >/dev/null 2>&1; then
+    USE_SUDO=""
+    echo "Docker can be run without sudo"
+  else
+    # Check if docker works with sudo
+    if sudo docker info >/dev/null 2>&1; then
+      USE_SUDO="sudo"
+      echo "Docker requires sudo privileges"
+    else
+      echo "Docker is not accessible even with sudo"
+      return 1
+    fi
+  fi
+  return 0
+}
 
 docker-safe() {
   if ! command -v docker &>/dev/null; then
@@ -166,10 +194,7 @@ docker-safe() {
     exit 1
   fi
 
-  if ! docker $@; then
-    echo "Trying again with sudo..." >&2
-    sudo docker $@
-  fi
+  $USE_SUDO docker $@
 }
 
 docker-compose-safe() {
@@ -182,10 +207,7 @@ docker-compose-safe() {
     exit 1
   fi
 
-  if ! $cmd $@; then
-    echo "Trying again with sudo..."
-    sudo $cmd $@
-  fi
+  $USE_SUDO $cmd $@
 }
 
 get_ip() {
@@ -303,9 +325,7 @@ if [ ! -z "${CONTAINER_ID}" ]; then
   echo "Existing container found. Reading settings from container."
 
   # Assign output of read_container_settings to variable
-  if ! ENV_VARS=$(docker inspect --format="{{range .Config.Env}}{{println .}}{{end}}" "$CONTAINER_ID"); then
-    ENV_VARS=$(sudo docker inspect --format="{{range .Config.Env}}{{println .}}{{end}}" "$CONTAINER_ID")
-  fi
+  ENV_VARS=$(docker-safe inspect --format="{{range .Config.Env}}{{println .}}{{end}}" "$CONTAINER_ID")
 
   if ! docker-safe cp "${CONTAINER_ID}:/home/node/app/cli/build/secrets.json" ./; then
     echo "Container does not have secrets.json"
