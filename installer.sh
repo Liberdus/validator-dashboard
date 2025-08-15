@@ -146,23 +146,6 @@ if ! command -v docker-compose &>/dev/null && ! docker --help | grep -q "compose
     sudo chmod +x /usr/local/bin/docker-compose
 fi
 
-# Verify installations
-command -v git >/dev/null 2>&1 || { echo >&2 "Failed to install git. Please install it manually."; exit 1; }
-command -v docker >/dev/null 2>&1 || { echo >&2 "Failed to install docker. Please install it manually."; exit 1; }
-if command -v docker-compose &>/dev/null; then
-    echo "docker-compose is installed on this machine"
-elif docker --help | grep -q "compose"; then
-    echo "docker compose subcommand is installed on this machine"
-else
-    echo "Failed to install docker-compose. Please install it manually."
-    exit 1
-fi
-
-# Detect if sudo is needed for docker commands
-detect_docker_sudo || { echo >&2 "Failed to access docker. Please check your docker installation."; exit 1; }
-
-export DOCKER_DEFAULT_PLATFORM=linux/amd64
-
 # Function to detect if sudo is needed for docker commands
 detect_docker_sudo() {
   # Check if docker command exists
@@ -188,13 +171,34 @@ detect_docker_sudo() {
   return 0
 }
 
+# Verify installations
+command -v git >/dev/null 2>&1 || { echo >&2 "Failed to install git. Please install it manually."; exit 1; }
+command -v docker >/dev/null 2>&1 || { echo >&2 "Failed to install docker. Please install it manually."; exit 1; }
+if command -v docker-compose &>/dev/null; then
+    echo "docker-compose is installed on this machine"
+elif docker --help | grep -q "compose"; then
+    echo "docker compose subcommand is installed on this machine"
+else
+    echo "Failed to install docker-compose. Please install it manually."
+    exit 1
+fi
+
+# Detect if sudo is needed for docker commands
+detect_docker_sudo || { echo >&2 "Failed to access docker. Please check your docker installation."; exit 1; }
+
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
 docker-safe() {
   if ! command -v docker &>/dev/null; then
     echo "docker is not installed on this machine"
     exit 1
   fi
 
-  $USE_SUDO docker $@
+  if [ -z "$USE_SUDO" ]; then
+    docker $@
+  else
+    sudo docker $@
+  fi
 }
 
 docker-compose-safe() {
@@ -207,7 +211,11 @@ docker-compose-safe() {
     exit 1
   fi
 
-  $USE_SUDO $cmd $@
+  if [ -z "$USE_SUDO" ]; then
+    $cmd $@
+  else
+    sudo $cmd $@
+  fi
 }
 
 get_ip() {
@@ -298,21 +306,13 @@ SHMINT_DEFAULT=10001
 PREVIOUS_PASSWORD=none
 
 
-GITLAB_IMAGE_NAME="registry.gitlab.com/liberdus/server:dev"
 GITHUB_IMAGE_NAME="ghcr.io/liberdus/server:dev"
-
-# Check if container exists with GitLab image
-GITLAB_CONTAINER_ID=$(docker-safe ps -qf "ancestor=$GITLAB_IMAGE_NAME")
 
 # Check if container exists with GitHub image
 GITHUB_CONTAINER_ID=$(docker-safe ps -qf "ancestor=$GITHUB_IMAGE_NAME")
 
 # Determine action based on found container
-if [ ! -z "$GITLAB_CONTAINER_ID" ]; then
-  echo "Existing GitLab container found. ID: $GITLAB_CONTAINER_ID"
-  # Perform actions for GitLab container, e.g., copy settings, upgrade
-  CONTAINER_ID=$GITLAB_CONTAINER_ID
-elif [ ! -z "$GITHUB_CONTAINER_ID" ]; then
+if [ ! -z "$GITHUB_CONTAINER_ID" ]; then
   echo "Existing GitHub container found. ID: $GITHUB_CONTAINER_ID"
   # Perform actions for GitHub container, e.g., copy settings, upgrade
   CONTAINER_ID=$GITHUB_CONTAINER_ID
@@ -325,7 +325,11 @@ if [ ! -z "${CONTAINER_ID}" ]; then
   echo "Existing container found. Reading settings from container."
 
   # Assign output of read_container_settings to variable
-  ENV_VARS=$(docker-safe inspect --format="{{range .Config.Env}}{{println .}}{{end}}" "$CONTAINER_ID")
+  if [ -z "$USE_SUDO" ]; then
+    ENV_VARS=$(docker inspect --format="{{range .Config.Env}}{{println .}}{{end}}" "$CONTAINER_ID")
+  else
+    ENV_VARS=$(sudo docker inspect --format="{{range .Config.Env}}{{println .}}{{end}}" "$CONTAINER_ID")
+  fi
 
   if ! docker-safe cp "${CONTAINER_ID}:/home/node/app/cli/build/secrets.json" ./; then
     echo "Container does not have secrets.json"
@@ -436,6 +440,7 @@ read_password() {
       PASSWORD+="$CHAR"
     fi
   done
+  echo # Print newline after password input
   echo $PASSWORD
 }
 
