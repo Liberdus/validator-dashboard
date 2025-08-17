@@ -159,7 +159,9 @@ Once your validator node is running, you can proceed with staking LIB to your no
 
 After staking, the Web Dashboard will show your staked amount (**1250 LIB or more**) and your node status will update to `Standby` shortly afterward. This indicates that your validator node is set up correctly. The network will then automatically add your validator to the active set based on network load and available validator slots.
 
-### Gracefully stoping the node
+## Stopping the Validator
+
+### Gracefully stopping the node
 
 Never forse stop your node if it is participating in the network as this will trigger a penalty on the stake amount. 
 
@@ -167,10 +169,11 @@ Always gracefully stop the node.
 
 1. In the validator dashboard, click the **Settings** icon.
 2. Uncheck the option for **Auto Restart Node** so that it does not join the network again after it is rotated out.
+3. Watch the dashboard to see when your node has stopped.
 
 ### Unstake LIB with Reward
 
-Once your validator node is stopped, you can proceed with unstaking the LIB and reward from your node.
+Once your validator node is stopped, you can proceed with withdrawing the staking and reward from your node.
 
 1. Open the [Liberdus wallet](https://liberdus.com/download/).
    - Sign In to the same account that you used when staking.
