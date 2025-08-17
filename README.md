@@ -133,8 +133,8 @@ Using Web Dashboard:
 
 - Open a web browser and navigate to the web dashboard at `https://localhost:8080` or https://ServerIP:8080
 - Enter the password you set during the installation process.
-- Select the testnet network from the drop down menu; developer can also select devnet, or localnet.
-- Click the `Start Node` button to launch your validator node.
+- Select the **testnet** network from the drop down menu; developer can also select devnet, or localnet.
+- Click the `**Start Node**` button to launch your validator node.
 
 Using Command Line:
 
@@ -152,23 +152,43 @@ Once your validator node is running, you can proceed with staking LIB to your no
 2. Open the [Liberdus wallet](https://liberdus.com/download/).
    - If this is your first time using the Liberdus Wallet, create an account by providing a username.
 3. Select the **Validator** option in the menu.
-5. Click the **Stake** button and enter your node address.
-   - If you’re using the mobile app, you can scan the QR code instead.
-4. If you don't have at least **1250 LIB**. you can get some by clicking the Claim button there.
-6. Wait about 15 seconds to get the LIB. Click the **Subit Stake** button to complete the staking process.
+5. Click the **Stake** button and copy-paste your node address from the dashboard.
+   - If you’re using a phone, you can scan the QR code shown on the dashboard.
+4. If you don't have at least **1250 LIB**. you can get some by clicking the **Claim** button.
+6. Wait about 15 seconds to get the LIB. Click the **Submit Stake** button to complete the staking process.
 
 After staking, the Web Dashboard will show your staked amount (**1250 LIB or more**) and your node status will update to `Standby` shortly afterward. This indicates that your validator node is set up correctly. The network will then automatically add your validator to the active set based on network load and available validator slots.
 
-## Software version updates
+### Gracefully stoping the node
 
-Occacionally you will see a message in the validator dashboard that you need to update the node software version. To be notified of updates you can also check the node operators announcement channel in the Liberdus Discord or subscribe to the node operators mailing list here https://groups.google.com/g/liberdus-node-operators
+Never forse stop your node if it is participating in the network as this will trigger a penalty on the stake amount. 
 
-### Gracefully stop the node
+Always gracefully stop the node.
 
 1. In the validator dashboard, click the **Settings** icon.
 2. Uncheck the option for **Auto Restart Node** so that it does not join the network again after it is rotated out.
 
-Never forse stop your node if it is participating in the network as this will trigger a penalty on the stake amount.
+### Unstake LIB with Reward
+
+Once your validator node is stopped, you can proceed with unstaking the LIB and reward from your node.
+
+1. Open the [Liberdus wallet](https://liberdus.com/download/).
+   - Sign In to the same account that you used when staking.
+2. Select the **Validator** option in the menu.
+3. Click the **Unstake** button and confirm that you want to unstake.
+   - If your node is still active or recently stopped you will need to wait before you can unstake.
+4. Wait about 15 seconds to get back the staked LIB and reward.
+5. If your node was penalized you will get back less than what you staked. Check the validator dashboard for penalty reasons.
+
+## Notification of Software updates
+
+As a node operator it is your responsibility to update the node software when there are new releases. If you do not update the node software, your node will not be allowed to join the network.
+
+There are 3 ways you can be nofied of updates.
+
+1. The validator dashboard will show a message if you need to update the node software version. 
+2. You can also subscribe to the node operators mailing list here https://groups.google.com/g/liberdus-node-operators to get announcements.
+3. you can also check the node operators announcement channel in the Liberdus Discord to be notified of software updates.
 
 ### Update the software
 
