@@ -56,43 +56,6 @@ sudo apt install docker-compose
 sudo docker-compose --version
 ```
 
-**For MacOS:**
-
-1. Install Package Managers
-
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-Add Homebrew to your `PATH`:
-
-```bash
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"'
-eval "$(/opt/homebrew/bin/brew shellenv)"
-```
-
-2. Update Package Managers:
-
-```bash
-brew update
-```
-
-3. Install docker
-
-```bash
-brew install docker
-```
-
-> Verify Docker installation by running `docker --version` (should return version 20.10.12 or higher).
-
-4. Install docker-compose
-
-```bash
-brew install docker-compose
-```
-
-> Verify docker-compose installation by running `docker-compose --version` (should return version 1.29.2 or higher).
-
 ## Create a Liberdus User
 
 Do the following as root or a sudo user to create a Liberdus user that will install and run the node:
