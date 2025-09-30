@@ -12,6 +12,10 @@ A server like this should cost less than $30 per month from a web hosting compan
 
 Although you can run a server from home, it is not recommended since electric power and redundant Internet connections would be lacking and would risk your node getting penalized if it goes down.
 
+## OS Requirements
+
+At present the Liberdus validator is only supported on Linux; latest Ubuntu LTS is recommended. If you are able to run it on Mac or Windows and post the instructions, we will link to it.
+
 ## Install Dockers
 
 Do the following as root or a sudo privilaged user:
