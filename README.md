@@ -73,7 +73,7 @@ sudo usermod -aG sudo liberdus
 ```
 
 ```bash
-su liberdus
+sudo su liberdus
 ```
 
 ```bash
