@@ -2,6 +2,8 @@
 
 This guide will walk you through the process of installing and running a Liberdus Validator Node on your system. Please follow the steps below carefully.
 
+If you run into any issues you can ask questions in the 'help' channel of the [Liberdus Discord](https://liberdus.com/discord/).
+
 ## Hardware Requirements
 
 The minimum requirements are:
