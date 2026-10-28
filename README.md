@@ -50,16 +50,20 @@ sudo apt install docker.io
 sudo docker --version
 ```
 
-4. Install docker-compose
+4. Install docker compose for ubuntu 24.04
 
 ```bash
-sudo apt install docker-compose
+sudo apt update 
 ```
 
-> Verify docker-compose installation by running `docker-compose --version` (should return version 1.29.2 or higher).
+```bash
+sudo apt install docker-compose-v2
+```
+
+> Verify docker compose installation by running `docker compose version` (should return version 1.29.2 or higher).
 
 ```bash
-sudo docker-compose --version
+docker compose version
 ```
 
 ## Create a Liberdus User
@@ -75,11 +79,11 @@ sudo usermod -aG sudo liberdus
 ```
 
 ```bash
-sudo su liberdus
+sudo su - liberdus
 ```
 
 ```bash
-cd
+mkdir liberdus && cd liberdus
 ```
 
 ## Download and Run Installation Script
