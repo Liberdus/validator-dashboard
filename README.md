@@ -82,10 +82,6 @@ sudo usermod -aG sudo liberdus
 sudo su - liberdus
 ```
 
-```bash
-mkdir liberdus && cd liberdus
-```
-
 ## Download and Run Installation Script
 
 Do the following as the user created above and not as root.
